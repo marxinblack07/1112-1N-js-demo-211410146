@@ -1,15 +1,9 @@
 /*
     Variables define.
 */
-const userInput = document.getElementById('input-number');
-let number = userInput.value
-userInput.addEventListener("change", (e) => {
-    number = e.target.value;
-    console.log("number:", number);
-})
+const userInput = document.querySelector('#input-number');
 
 /*  Divisors Variables  */
-const divisorBtn    =   document.querySelectorAll('button');
 const divisorPlus   =   document.querySelector('#btn-add');
 const divisorMinus  =   document.querySelector('#btn-subtract');
 const divisorTimes  =   document.querySelector('#btn-multiply');
@@ -24,9 +18,12 @@ const resultNumber  =   document.querySelector('#current-result');
 const defaultResult =   0;
 let resultBuffer    =   defaultResult;
 
-/* 
+/*
     Functions
 */
+const getUserInput = () => {
+    return parseInt(userInput.value);
+}
 const outputResult = (result, text) => {
     resultFormula.textContent = result;
     resultNumber.textContent = text;
@@ -34,7 +31,7 @@ const outputResult = (result, text) => {
 
 const add = () => {
     const operand1 = resultBuffer;
-    const operand2 = number;
+    const operand2 = getUserInput();
     resultBuffer = operand1 + operand2;
     console.log(`${operand1} + ${operand2} = ${resultBuffer}`);
     const calcText = `${operand1} + ${operand2}`;
@@ -43,7 +40,7 @@ const add = () => {
 
 const minus = () => {
     const operand1 = resultBuffer;
-    const operand2 = number;
+    const operand2 = getUserInput();
     resultBuffer = operand1 - operand2;
     console.log(`${operand1} - ${operand2} = ${resultBuffer}`);
     const calcText = `${operand1} - ${operand2}`;
@@ -52,7 +49,7 @@ const minus = () => {
 
 const times = () => {
     const operand1 = resultBuffer;
-    const operand2 = number;
+    const operand2 = getUserInput();
     resultBuffer = operand1 * operand2;
     console.log(`${operand1} * ${operand2} = ${resultBuffer}`);
     const calcText = `${operand1} * ${operand2}`;
@@ -61,7 +58,7 @@ const times = () => {
 
 const divide = () => {
     const operand1 = resultBuffer;
-    const operand2 = number;
+    const operand2 = getUserInput();
     resultBuffer = operand1 / operand2;
     console.log(`${operand1} / ${operand2} = ${resultBuffer}`);
     const calcText = `${operand1} / ${operand2}`;
@@ -69,10 +66,10 @@ const divide = () => {
 }
 
 
-divisorPlus.addEventListener('click', add());
-divisorMinus.addEventListener('click', minus());
-divisorTimes.addEventListener('click', times());
-divisorDivide.addEventListener('click', divide());
+divisorPlus.addEventListener('click', add);
+divisorMinus.addEventListener('click', minus);
+divisorTimes.addEventListener('click', times);
+divisorDivide.addEventListener('click', divide);
 /*
     Log part.
 */
@@ -83,5 +80,4 @@ divisorDivide.addEventListener('click', divide());
 // console.log('Divide: ', divisorDivide);
 // console.log('resultFormula: ', resultFormula);
 // console.log('resultNumber: ', resultNumber);
-console.log('Btn: ', divisorBtn);
 // console.log('User Value:', userValue);
