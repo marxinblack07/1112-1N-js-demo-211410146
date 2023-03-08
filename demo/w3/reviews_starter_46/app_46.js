@@ -28,6 +28,13 @@ const reviews = [
     img: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg',
     text: 'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
   },
+  {
+    id: 5,
+    name: 'marx wang',
+    job: 'system analysis',
+    img: '',
+    text: 'It\'s my pleasure to met you guys. I\'m doing my best.'
+  }
 ];
 
 const img = document.querySelector('#person-img');
@@ -38,3 +45,14 @@ const info = document.querySelector('#info');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 const randomBtn = document.querySelector('.random-btn');
+
+
+let currentItem = 0;
+window.addEventListener('DOMContentLoaded',() => {
+  const item = reviews[currentItem];
+  img.src = item.img;
+  author.textContent = item.name;
+  job.textContent = item.job;
+  info.textContent = item.text;
+  console.log('item',item);
+});
