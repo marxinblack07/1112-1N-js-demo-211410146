@@ -77,3 +77,8 @@ prevBtn.addEventListener('click', () => {
   }
   showPreview(currentItem);
 })
+
+randomBtn.addEventListener('click', () => {
+  currentItem = Math.floor(Math.random() * reviews.length);
+  showPreview(currentItem);
+})
