@@ -32,7 +32,7 @@ const reviews = [
     id: 5,
     name: 'marx wang',
     job: 'system analysis',
-    img: '',
+    img: 'https://lkzqmneikhvduesdatyd.supabase.co/storage/v1/object/public/demo-46/md_1N_img/w3/self-photo.jpg',
     text: 'It\'s my pleasure to met you guys. I\'m doing my best.'
   }
 ];
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded',() => {
 const showPreview = (person) => {
   const item = reviews[person];
   console.log('item',item);
-  item.src = item.img;
+  img.src = item.img;
   author.textContent = item.name;
   job.textContent = item.job;
   info.textContent = item.text;
@@ -66,6 +66,14 @@ nextBtn.addEventListener('click', () => {
   currentItem++;
   if(currentItem >= reviews.length) {
     currentItem = 0;
+  }
+  showPreview(currentItem);
+})
+
+prevBtn.addEventListener('click', () => {
+  currentItem--;
+  if(currentItem < 0) {
+    currentItem = reviews.length - 1;
   }
   showPreview(currentItem);
 })
