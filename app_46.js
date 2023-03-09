@@ -94,6 +94,7 @@ const menu = [
     }
 ];
 const category = [
+    "all",
     "breakfast",
     "lunch",
     "dinner",
@@ -125,9 +126,9 @@ const displayMenuItems = (menu) => {
       </article>`
     });
     //  Join let things in array turn into string.
-    console.log('Before Join: ', displayMenu);
+    // console.log('Before Join: ', displayMenu);
     displayMenu = displayMenu.join('');
-    console.log('After Join: ', displayMenu);
+    // console.log('After Join: ', displayMenu);
     sectionCenter.innerHTML = displayMenu;
 }
 
@@ -137,6 +138,7 @@ const displayBtnItems = () => {
             <button type="button" class="filter-btn" data-id="${item}">${item}</button>
         `
     });
-    console.log('Display Menu: ', displayMenu.join(''));
+    console.log('Before Join: ', displayMenu);
     btnContainer.innerHTML = displayMenu.join('');
+    console.log('After Join: ', displayMenu.join(''));
 }
