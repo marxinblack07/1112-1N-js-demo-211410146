@@ -33,7 +33,7 @@ const menu = [
         id: 4,
         title:  "marshmallow",
         price:  3.99,
-        category:   "breakfast",
+        category:   "dessert",
         image:  "./images/my-1.jpeg",
         remote_image:   "https://lkzqmneikhvduesdatyd.supabase.co/storage/v1/object/public/demo-46/1N_img/w4/my-1.jpg?t=2023-03-09T11%3A08%3A08.499Z",
         desc:   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, atque?",
@@ -51,7 +51,7 @@ const menu = [
         id: 6,
         title:  "steaks",
         price:  25.99,
-        category:   "Dinner",
+        category:   "dinner",
         image:  "./images/my-3.jpeg",
         remote_image:   "https://lkzqmneikhvduesdatyd.supabase.co/storage/v1/object/public/demo-46/1N_img/w4/my-3.jpg?t=2023-03-09T11%3A09%3A59.836Z",
         desc:   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, atque?",
@@ -93,19 +93,12 @@ const menu = [
         desc:   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, atque?",
     }
 ];
-const category = [
-    "all",
-    "breakfast",
-    "lunch",
-    "dinner",
-    "shakes",
-    "dessert"
-]
+
 const sectionCenter = document.querySelector('.section-center');
 const btnContainer = document.querySelector('.btn-container');
 
 window.addEventListener('DOMContentLoaded', () => {
-    displayBtnItems();
+    displayBtnItems(menu);
     displayMenuItems(menu);
 });
 
@@ -132,12 +125,20 @@ const displayMenuItems = (menu) => {
     sectionCenter.innerHTML = displayMenu;
 }
 
-const displayBtnItems = () => {
-    let displayMenu = category.map((item) => {
-        return `
-            <button type="button" class="filter-btn" data-id="${item}">${item}</button>
-        `
-    });
+const displayBtnItems = (menu) => {
+    let displayMenu = [
+        "all", ...new Set(menu.map((item) => item.category))].map(
+            (item)=>{
+                return `
+                <button type="button" class="filter-btn" data-id="${item}">${item}</button>
+                `
+    })
+    // let displayMenu = menu.map((item) => {
+    //     console.log(item);
+    //     return `
+    //         <button type="button" class="filter-btn" data-id="${item}">${item}</button>
+    //     `
+    // });
     console.log('Before Join: ', displayMenu);
     btnContainer.innerHTML = displayMenu.join('');
     console.log('After Join: ', displayMenu.join(''));
